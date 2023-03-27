@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>NJIT Credit Union</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+        <script>
+            function enableTextBox(elem) {
+                var depositInput = document.getElementById("deposit");
+                var withdrawInput = document.getElementById("withdraw");
+                if (elem.value == "deposit") {
+                    depositInput.disabled = false;
+                    withdrawInput.disabled = true;
+                } else {
+                    depositInput.disabled = true;
+                    withdrawInput.disabled = false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <section class="hero is-info is-fixed-top">
+            <div class="hero-body is-spaced">
+                <div class="container">
+                    <h1 class="title has-text-centered is-size-1"> NJIT Credit Union </h1>
+                </div>
+            </div>
+        </section>
+        <section class="section has-background is-primary">
+            <div class="container">
+                <div class="columns is-centered is-vcentered">
+                    <div class="column is-two-thirds">
+                        <form action="ATMServlet" method="post">
+                            <div class="columns is-centered">
+                                <div class="column is-3 has-text-right is-size-3"> UserID: </div>
+                                <div class="column control">
+                                    <input class="input" type="text" name="userID" placeholder="Enter User ID">
+                                </div>
+                                <div class="column">
+                                    <button class="button is-dark">Submit</button>
+                                </div>
+                            </div>
+                            <div class="card has-background-grey-light" style="pointer-events: none;">
+                                <header class="card-header">
+                                    <p class="card-header-title"> Transaction </p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="columns is-centered">
+                                        <div class="column is-3 has-text-right is-size-5"> Deposit: </div>
+                                        <div class="column control">
+                                            <input class="input" type="number" step="0.01" name="deposit" id="deposit" placeholder="Enter deposit amount" disabled>
+                                        </div>
+                                        <div class="column">
+                                            <input type="radio" name="transaction" value="deposit" onclick="enableTextBox(this)"> Deposit
+                                        </div>
+                                    </div>
+                                    <div class="columns is-centered">
+                                        <div class="column is-3 has-text-right is-size-5"> Withdraw: </div>
+                                        <div class="column control">
+                                            <input class="input" type="number" step="0.01" name="withdraw" id="withdraw" placeholder="Enter withdraw amount" disabled>
+                                        </div>
+                                        <div class="column">
+                                            <input type="radio" name="transaction" value="withdraw" onclick="enableTextBox(this)"> Withdraw
+                                        </div>
+                                    </div>
+                                    <div class="columns is-centered">
+                                        <div class="column is-three-fifths is-offset-one-fifth">
+                                            <button class="button is-dark">Submit Transaction</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
